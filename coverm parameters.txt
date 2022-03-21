@@ -1,0 +1,18 @@
+for d in /lustre/projects/Research_Project-172179/metag/shared_store/gov2/reads/5m/*/ ; do
+	
+	cd $d
+	
+	coverm contig \
+	-1 *.5m.fwd.fq.gz \
+	-2 *.5m.rev.fq.gz \
+	--reference /lustre/home/pl405/fastas/all_pelagiphage_genomes.fasta \
+	--min-read-percent-identity 95 \
+	--min-read-aligned-percent 90 \
+	--bam-file-cache-directory /lustre/home/pl405/fastas/bams \
+	--discard-unmapped \
+	--min-covered-fraction 70 \
+	--threads 16
+	
+	cd ../
+	
+done
